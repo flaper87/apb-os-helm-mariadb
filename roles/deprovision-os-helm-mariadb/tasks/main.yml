@@ -1,0 +1,6 @@
+---
+- name: Uninstall helm chart
+  helm:
+    host: localhost
+    state: absent
+    name: os-helm-mariadb

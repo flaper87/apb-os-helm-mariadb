@@ -1,0 +1,27 @@
+---
+#- name: create namespace if it doesn't exist
+#  openshift_v1_project:
+#    name: '{{ namespace }}'
+
+- name: Install helm chart
+  helm:
+    host: localhost
+    chart:
+      name: mariadb 
+      version: 0.1.0
+      source:
+        type: git 
+        location: git://github.com/openstack/openstack-helm
+        subpath: mariadb
+        reference: master
+      dependencies:
+        - name: helm-toolkit
+          values: {}
+          source:
+            type: git
+            location: git://github.com/openstack/openstack-helm
+            subpath: helm-toolkit
+            reference: master
+    state: installed
+    name: os-helm-mariadb
+    namespace: default

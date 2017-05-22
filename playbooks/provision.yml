@@ -1,0 +1,7 @@
+- name: os-helm-mariadb provision
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  roles:
+  - role: provision-os-helm-mariadb
+    playbook_debug: true
